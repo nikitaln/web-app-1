@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+
+<body>
+<div id="user-form">
+    <form method="post" th:action="@{/users}" th:object="${user}">
+        <h2>Ввод личной информации</h2>
+        <label>Имя</label>
+        <input type="text" name="username" value="">
+        <label>Возраст</label>
+        <input type="text" name="age" value="">
+        <input class="btn-user" type="submit" value="login">
+    </form>
+</div>
+
+<div id="user-list" method="get" th:action="@{/users}" th:object="${user}">
+    <span id="user-name" th:text="${username}"></span>
+    <span id="user-age" th:text="${age}"></span>
+</div>
+
+</body>
+</html>
