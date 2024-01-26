@@ -4,25 +4,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "people")
 public class UserController {
 
     private Storage storage = new Storage();
 
-    @PostMapping("/users")
+    @PostMapping("/save")
     public String addUser(User user) {
         System.out.println("Попали в post метод");
-        System.out.println(user.getUsername());
+        System.out.println("Объект - " + user.getUsername());
         storage.addUser(user);
-        return "redirect:/";
+        return "redirect:/people/list";
     }
 
-    @GetMapping("/")
+    @GetMapping("/list")
     public String getUsers(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("user-name", storage.users.get(0).getUsername());
-        model.addAttribute("user-age", storage.users.get(0).getAge());
+        model.addAttribute("userList", storage.users);
         return "index";
     }
 

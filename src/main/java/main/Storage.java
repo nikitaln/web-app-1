@@ -9,6 +9,6 @@ public class Storage {
 
     public void addUser(User user) {
         users.add(user);
-        System.out.println("=> add to users");
+        System.out.println("Добавили в коллекцию");
     }
 }
