@@ -19,6 +19,19 @@
     </form>
 </div>
 
+<form method="post" th:action="@{/people/remove}">
+    <table>
+        <tr>
+            <td>
+                <input type="text" placeholder="id number" th:name="userIdToRemove">
+            </td>
+            <td>
+                <input type="submit" value="remove">
+            </td>
+        </tr>
+    </table>
+</form>
+
 <table id="users">
     <tr>
         <th>username</th>
