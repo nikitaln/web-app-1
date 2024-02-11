@@ -20,6 +20,9 @@ public class UserController {
         System.out.println("метод POST");
         System.out.println("объект: '" + user.getUsername() + "' сохранен");
         storage.addUser(user);
+
+
+
         return "redirect:/people/list";
     }
 

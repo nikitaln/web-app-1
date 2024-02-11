@@ -5,8 +5,11 @@ import java.util.List;
 
 public class Storage {
 
+
     private final List<User> users = new ArrayList<>();
     private int idUser = 0;
+
+    DataToSQL dataToSQL = new DataToSQL();
 
 
 
@@ -21,6 +24,9 @@ public class Storage {
         user.setId(idUser);
         users.add(user);
         System.out.println("добавили в коллекцию юзера: " + user.getUsername() + " c ИД=" + user.getId());
+
+        dataToSQL.addUserToSQL(user.getUsername(), user.getAge());
+        System.out.println("Добавили в БД");
     }
 
 
@@ -31,10 +37,14 @@ public class Storage {
             if (user.getId().equals(userIdToRemove)) {
                 users.remove(user);
                 System.out.println("удалили юзера: '" + user.getUsername() + "'");
+                System.out.println("ИДЕМ в БД если true");
+                dataToSQL.deleteUserFromSQL(userIdToRemove);
                 return true;
             }
         }
-    return false;
+        System.out.println("ИДЕМ в БД если false");
+        dataToSQL.deleteUserFromSQL(userIdToRemove);
+        return false;
     }
 
 
